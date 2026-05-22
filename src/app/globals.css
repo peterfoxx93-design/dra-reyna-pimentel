@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: #E8F4FD;
+  --color-brand-100: #C5E5FA;
+  --color-brand-200: #92CFF5;
+  --color-brand-300: #5CB5EF;
+  --color-brand-400: #2E9EE8;
+  --color-brand-500: #0D7CBF;
+  --color-brand-600: #0A639A;
+  --color-brand-700: #074A73;
+  --color-brand-800: #05334F;
+  --color-brand-900: #021E2F;
+  --color-accent: #4FC3F7;
+  --color-dark: #0D2137;
+  --color-light: #F0F8FF;
+
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    color: #1a1a2e;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(135deg, #0D7CBF, #4FC3F7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .bg-gradient-brand {
+    background: linear-gradient(135deg, #0D7CBF, #074A73);
+  }
+
+  .bg-gradient-light {
+    background: linear-gradient(135deg, #F0F8FF, #E8F4FD);
+  }
+
+  .shadow-soft {
+    box-shadow: 0 4px 20px rgba(13, 124, 191, 0.10);
+  }
+
+  .shadow-card {
+    box-shadow: 0 8px 32px rgba(13, 124, 191, 0.08);
+  }
+}
