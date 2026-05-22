@@ -25,6 +25,27 @@ export default function ContactForm() {
     e.preventDefault();
     setLoading(true);
 
+    // 🔒 Sanitizar inputs
+    const sanitize = (str: string) =>
+      str
+        .replace(/<[^>]*>/g, "") // eliminar HTML tags
+        .replace(/[<>"'\\;()]/g, "") // caracteres peligrosos
+        .trim()
+        .slice(0, 200);
+
+    const safeForm = {
+      nombre: sanitize(form.nombre),
+      telefono: sanitize(form.telefono).replace(/[^0-9+\-() ]/g, ""),
+      servicio: sanitize(form.servicio),
+      mensaje: sanitize(form.mensaje),
+    };
+
+    if (!safeForm.nombre || !safeForm.telefono) {
+      alert("Por favor completa los campos obligatorios.");
+      setLoading(false);
+      return;
+    }
+
     // Simulación de envío para el demo
     await new Promise((r) => setTimeout(r, 1500));
     setSubmitted(true);
