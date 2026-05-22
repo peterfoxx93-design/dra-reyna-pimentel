@@ -13,8 +13,8 @@ interface Props {
 export default function GlassCard({ children, className = "", hover = true }: Props) {
   return (
     <motion.div
-      whileHover={hover ? { y: -4, scale: 1.01 } : undefined}
-      transition={{ duration: 0.2 }}
+      whileHover={hover ? { y: -6, scale: 1.02 } : undefined}
+      transition={{ duration: 0.3 }}
       className={clsx(
         "bg-white rounded-2xl border border-brand-100 shadow-card p-6 transition-shadow",
         hover && "hover:shadow-lg",

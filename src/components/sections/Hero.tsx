@@ -86,12 +86,12 @@ export default function Hero() {
           >
             <div className="relative">
               {/* Photo frame */}
-              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white shadow-xl">
+              <div className="relative w-72 h-72 sm:w-80 sm:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white shadow-xl group">
                 <Image
                   src="/images/dra-reyna-hero.jpg"
                   alt="Dra. Reyna Pimentel"
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
                   priority
                 />
               </div>

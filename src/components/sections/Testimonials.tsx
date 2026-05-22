@@ -43,7 +43,7 @@ export default function Testimonials() {
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl p-6 border border-brand-100 shadow-card"
+              className="bg-white rounded-2xl p-6 border border-brand-100 shadow-card hover:shadow-lg transition-all duration-300 hover:-translate-y-1"
             >
               <Quote className="w-8 h-8 text-brand-200 mb-3" />
               <p className="text-dark/70 text-sm leading-relaxed mb-4">
