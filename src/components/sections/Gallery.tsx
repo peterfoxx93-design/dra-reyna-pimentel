@@ -9,25 +9,25 @@ const cases = [
   {
     image: "/images/gallery-smile-1.jpg",
     title: "Diseño de Sonrisa",
-    desc: "Transformación completa con carillas y blanqueamiento. Resultado natural y radiante.",
-    tag: "Antes/Después",
+    desc: "Transformación estética completa. Carillas, blanqueamiento y rehabilitación para una sonrisa espectacular.",
+    tag: "Estética Dental",
   },
   {
     image: "/images/gallery-smile-2.jpg",
     title: "Ortodoncia",
-    desc: "Corrección de alineación dental con brackets estéticos. Sonrisa perfecta en 18 meses.",
-    tag: "Tratamiento",
+    desc: "Corrección de alineación dental con brackets tradicionales o estéticos. Resultados que duran toda la vida.",
+    tag: "Alineación",
   },
   {
     image: "/images/gallery-smile-3.jpg",
     title: "Rehabilitación Estética",
-    desc: "Coronas de porcelana y reconstrucción total. Función y belleza restauradas.",
+    desc: "Coronas, puentes e implantes. Restauramos función y belleza con materiales de última generación.",
     tag: "Restauración",
   },
   {
     image: "/images/gallery-smile-4.jpg",
     title: "Atención Integral",
-    desc: "Odontología general con enfoque preventivo. Cuidamos toda tu salud bucal.",
+    desc: "Odontología general con enfoque preventivo. Cuidamos toda tu salud bucal en un ambiente moderno y acogedor.",
     tag: "Preventiva",
   },
 ];
