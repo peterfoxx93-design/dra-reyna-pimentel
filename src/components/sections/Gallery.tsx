@@ -1,34 +1,32 @@
 "use client";
 
-import { SwatchBook, Star, ArrowUpRight } from "lucide-react";
-import Image from "next/image";
+import { ArrowUpRight, Star } from "lucide-react";
 import AnimatedSection from "@/components/shared/AnimatedSection";
-import GlassCard from "@/components/shared/GlassCard";
 
 const cases = [
   {
-    image: "/images/gallery-smile-1.jpg",
     title: "Diseño de Sonrisa",
-    desc: "Transformación estética completa. Carillas, blanqueamiento y rehabilitación para una sonrisa espectacular.",
-    tag: "Estética Dental",
+    desc: "Transformación estética con carillas, blanqueamiento y rehabilitación profesional.",
+    gradient: "from-brand-400 to-brand-600",
+    icon: "✨",
   },
   {
-    image: "/images/gallery-smile-2.jpg",
     title: "Ortodoncia",
-    desc: "Corrección de alineación dental con brackets tradicionales o estéticos. Resultados que duran toda la vida.",
-    tag: "Alineación",
+    desc: "Brackets tradicionales y estéticos. Corregimos la alineación para una sonrisa perfecta.",
+    gradient: "from-accent to-brand-400",
+    icon: "😬",
   },
   {
-    image: "/images/gallery-smile-3.jpg",
     title: "Rehabilitación Estética",
-    desc: "Coronas, puentes e implantes. Restauramos función y belleza con materiales de última generación.",
-    tag: "Restauración",
+    desc: "Coronas, puentes e implantes. Función y belleza restauradas con materiales de última generación.",
+    gradient: "from-brand-600 to-dark",
+    icon: "🦷",
   },
   {
-    image: "/images/gallery-smile-4.jpg",
     title: "Atención Integral",
-    desc: "Odontología general con enfoque preventivo. Cuidamos toda tu salud bucal en un ambiente moderno y acogedor.",
-    tag: "Preventiva",
+    desc: "Odontología general, preventiva y pediatrica. Cuidamos toda tu salud bucal.",
+    gradient: "from-brand-300 to-brand-500",
+    icon: "👩‍⚕️",
   },
 ];
 
@@ -53,36 +51,44 @@ export default function Gallery() {
         {/* Gallery Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {cases.map((item, i) => (
-            <GlassCard key={i} className="!p-0 overflow-hidden group">
-              <div className="relative aspect-[4/3] overflow-hidden">
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div
+              key={i}
+              className="relative group rounded-2xl overflow-hidden cursor-pointer"
+            >
+              {/* Gradient background */}
+              <div
+                className={`absolute inset-0 bg-gradient-br ${item.gradient}`}
+              />
+              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
+
+              {/* Content */}
+              <div className="relative p-8 sm:p-10 min-h-[240px] flex flex-col justify-end">
+                {/* Icon */}
+                <span className="text-4xl mb-4">{item.icon}</span>
+
                 {/* Tag */}
-                <span className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-dark">
-                  {item.tag}
+                <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium mb-3 w-fit">
+                  Caso de éxito
                 </span>
-              </div>
-              <div className="p-5">
-                <h3 className="text-lg font-semibold text-dark mb-1">
+
+                {/* Title + Desc */}
+                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
                   {item.title}
                 </h3>
-                <p className="text-sm text-dark/60">{item.desc}</p>
+                <p className="text-sm text-white/80 max-w-sm">{item.desc}</p>
+
+                {/* Instagram link */}
                 <a
                   href="https://www.instagram.com/drareynapimentel/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 mt-3 text-brand-500 text-sm font-medium hover:text-brand-600 transition-colors"
+                  className="inline-flex items-center gap-1.5 mt-4 text-white/70 hover:text-white text-sm font-medium transition-colors group/link"
                 >
-                  Ver en Instagram
-                  <ArrowUpRight className="w-3.5 h-3.5" />
+                  Ver casos reales en Instagram
+                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                 </a>
               </div>
-            </GlassCard>
+            </div>
           ))}
         </div>
 
@@ -95,7 +101,7 @@ export default function Gallery() {
             className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full hover:opacity-90 transition-all shadow-soft"
           >
             <Star className="w-4 h-4 fill-white" />
-            Ver más en Instagram
+            Ver resultados en @dra.reynapimentel
           </a>
         </div>
       </div>
