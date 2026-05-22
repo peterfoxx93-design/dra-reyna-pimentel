@@ -1,8 +1,36 @@
 "use client";
 
-import { SwatchBook, Star } from "lucide-react";
+import { SwatchBook, Star, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import AnimatedSection from "@/components/shared/AnimatedSection";
+import GlassCard from "@/components/shared/GlassCard";
+
+const cases = [
+  {
+    image: "/images/gallery-smile-1.jpg",
+    title: "Diseño de Sonrisa",
+    desc: "Transformación completa con carillas y blanqueamiento. Resultado natural y radiante.",
+    tag: "Antes/Después",
+  },
+  {
+    image: "/images/gallery-smile-2.jpg",
+    title: "Ortodoncia",
+    desc: "Corrección de alineación dental con brackets estéticos. Sonrisa perfecta en 18 meses.",
+    tag: "Tratamiento",
+  },
+  {
+    image: "/images/gallery-smile-3.jpg",
+    title: "Rehabilitación Estética",
+    desc: "Coronas de porcelana y reconstrucción total. Función y belleza restauradas.",
+    tag: "Restauración",
+  },
+  {
+    image: "/images/gallery-smile-4.jpg",
+    title: "Atención Integral",
+    desc: "Odontología general con enfoque preventivo. Cuidamos toda tu salud bucal.",
+    tag: "Preventiva",
+  },
+];
 
 export default function Gallery() {
   return (
@@ -22,46 +50,39 @@ export default function Gallery() {
           </p>
         </div>
 
-        {/* Gallery grid — usando imágenes del letrero como referencia visual */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-          {[
-            {
-              label: "Diseño de Sonrisa",
-              icon: Star,
-              color: "from-brand-400 to-brand-600",
-            },
-            {
-              label: "Ortodoncia",
-              icon: SwatchBook,
-              color: "from-accent to-brand-400",
-            },
-            {
-              label: "Rehabilitación",
-              icon: Star,
-              color: "from-brand-600 to-dark",
-            },
-            {
-              label: "Atención Integral",
-              icon: SwatchBook,
-              color: "from-brand-300 to-brand-500",
-            },
-          ].map((item, i) => (
-            <div
-              key={i}
-              className="relative aspect-square rounded-2xl overflow-hidden group cursor-pointer"
-            >
-              <div
-                className={`absolute inset-0 bg-gradient-br ${item.color}`}
-              />
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors" />
-              <div className="absolute inset-0 flex flex-col items-center justify-center text-white p-4">
-                <item.icon className="w-8 h-8 mb-2 opacity-80" />
-                <p className="text-sm font-semibold text-center">{item.label}</p>
+        {/* Gallery Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {cases.map((item, i) => (
+            <GlassCard key={i} className="!p-0 overflow-hidden group">
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                {/* Tag */}
+                <span className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-dark">
+                  {item.tag}
+                </span>
               </div>
-              <p className="absolute bottom-2 left-2 text-[10px] text-white/50">
-                Ver en Instagram →
-              </p>
-            </div>
+              <div className="p-5">
+                <h3 className="text-lg font-semibold text-dark mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-sm text-dark/60">{item.desc}</p>
+                <a
+                  href="https://www.instagram.com/drareynapimentel/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 mt-3 text-brand-500 text-sm font-medium hover:text-brand-600 transition-colors"
+                >
+                  Ver en Instagram
+                  <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+              </div>
+            </GlassCard>
           ))}
         </div>
 
@@ -71,9 +92,10 @@ export default function Gallery() {
             href="https://www.instagram.com/drareynapimentel/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-brand-500 font-semibold hover:text-brand-600 transition-colors"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full hover:opacity-90 transition-all shadow-soft"
           >
-            Ver más resultados en @dra.reynapimentel →
+            <Star className="w-4 h-4 fill-white" />
+            Ver más en Instagram
           </a>
         </div>
       </div>
