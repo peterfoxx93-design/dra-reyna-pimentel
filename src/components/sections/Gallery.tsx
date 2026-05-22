@@ -1,32 +1,33 @@
 "use client";
 
 import { ArrowUpRight, Star } from "lucide-react";
+import Image from "next/image";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 
 const cases = [
   {
+    image: "/images/gallery-smile-1.jpg",
     title: "Diseño de Sonrisa",
-    desc: "Transformación estética con carillas, blanqueamiento y rehabilitación profesional.",
-    gradient: "from-brand-400 to-brand-600",
-    icon: "✨",
+    desc: "Carillas, blanqueamiento y rehabilitación estética. Resultados naturales y radiantes que transforman tu sonrisa.",
+    tag: "Estética Dental",
   },
   {
+    image: "/images/gallery-smile-2.jpg",
     title: "Ortodoncia",
-    desc: "Brackets tradicionales y estéticos. Corregimos la alineación para una sonrisa perfecta.",
-    gradient: "from-accent to-brand-400",
-    icon: "😬",
+    desc: "Brackets tradicionales y estéticos. Corregimos la alineación dental para una sonrisa perfecta y saludable.",
+    tag: "Alineación",
   },
   {
+    image: "/images/gallery-smile-3.jpg",
     title: "Rehabilitación Estética",
-    desc: "Coronas, puentes e implantes. Función y belleza restauradas con materiales de última generación.",
-    gradient: "from-brand-600 to-dark",
-    icon: "🦷",
+    desc: "Coronas, puentes e implantes. Restauramos función y belleza con materiales de alta calidad.",
+    tag: "Restauración",
   },
   {
+    image: "/images/gallery-smile-4.jpg",
     title: "Atención Integral",
-    desc: "Odontología general, preventiva y pediatrica. Cuidamos toda tu salud bucal.",
-    gradient: "from-brand-300 to-brand-500",
-    icon: "👩‍⚕️",
+    desc: "Odontología general, preventiva y pediatrica. Te recibimos en un ambiente moderno y acogedor.",
+    tag: "Nuestra Clínica",
   },
 ];
 
@@ -53,39 +54,38 @@ export default function Gallery() {
           {cases.map((item, i) => (
             <div
               key={i}
-              className="relative group rounded-2xl overflow-hidden cursor-pointer"
+              className="group rounded-2xl overflow-hidden bg-white border border-brand-100 shadow-card hover:shadow-lg transition-all"
             >
-              {/* Gradient background */}
-              <div
-                className={`absolute inset-0 bg-gradient-br ${item.gradient}`}
-              />
-              <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
-
-              {/* Content */}
-              <div className="relative p-8 sm:p-10 min-h-[240px] flex flex-col justify-end">
-                {/* Icon */}
-                <span className="text-4xl mb-4">{item.icon}</span>
-
-                {/* Tag */}
-                <span className="inline-block px-3 py-1 bg-white/20 backdrop-blur-sm rounded-full text-white text-xs font-medium mb-3 w-fit">
-                  Caso de éxito
+              {/* Image */}
+              <div className="relative aspect-[4/3] overflow-hidden">
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
+                <span className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-dark shadow-sm">
+                  {item.tag}
                 </span>
+              </div>
 
-                {/* Title + Desc */}
-                <h3 className="text-xl sm:text-2xl font-bold text-white mb-2">
+              {/* Info */}
+              <div className="p-5">
+                <h3 className="text-lg font-semibold text-dark mb-1">
                   {item.title}
                 </h3>
-                <p className="text-sm text-white/80 max-w-sm">{item.desc}</p>
-
-                {/* Instagram link */}
+                <p className="text-sm text-dark/60 leading-relaxed">
+                  {item.desc}
+                </p>
                 <a
                   href="https://www.instagram.com/drareynapimentel/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 mt-4 text-white/70 hover:text-white text-sm font-medium transition-colors group/link"
+                  className="inline-flex items-center gap-1 mt-3 text-brand-500 text-sm font-medium hover:text-brand-600 transition-colors group/link"
                 >
                   Ver casos reales en Instagram
-                  <ArrowUpRight className="w-4 h-4 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                  <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
                 </a>
               </div>
             </div>
