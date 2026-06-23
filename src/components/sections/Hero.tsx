@@ -43,7 +43,7 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg text-dark/60 max-w-lg mb-8">
-              Centro Odontológico en Puerto Plata con más de 12 años de experiencia
+              Centro Odontológico en Nagua con más de 12 años de experiencia
               transformando sonrisas con calidez, profesionalismo y excelencia.
             </p>
 
