@@ -5,6 +5,12 @@ import { motion } from "motion/react";
 import Image from "next/image";
 
 export default function Hero() {
+  const scrollToContacto = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const el = document.querySelector("#contacto");
+    el?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section
       id="hero"
@@ -37,13 +43,13 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg text-dark/60 max-w-lg mb-8">
-              Centro Odontológico en Nagua con más de 12 años de experiencia
+              Centro Odontológico en Puerto Plata con más de 12 años de experiencia
               transformando sonrisas con calidez, profesionalismo y excelencia.
             </p>
 
             {/* Big Phone Number */}
             <a
-              href="tel:+18095847033"
+              href="tel:+180****7033"
               className="inline-flex items-center gap-3 px-6 py-4 bg-gradient-brand rounded-2xl text-white mb-8 hover:scale-[1.02] transition-transform shadow-lg"
             >
               <Phone className="w-6 h-6" />
@@ -60,10 +66,9 @@ export default function Hero() {
             {/* CTAs */}
             <div className="flex flex-wrap gap-4">
               <a
-                href="https://wa.me/18095847033?text=Hola%20Dra.%20Reyna%2C%20quiero%20agendar%20una%20cita"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 text-white font-semibold rounded-full hover:bg-green-600 transition-all shadow-soft"
+                href="#contacto"
+                onClick={scrollToContacto}
+                className="inline-flex items-center gap-2 px-6 py-3 bg-green-500 text-white font-semibold rounded-full hover:bg-green-600 transition-all shadow-soft cursor-pointer"
               >
                 <Calendar className="w-5 h-5" />
                 Agenda tu cita
