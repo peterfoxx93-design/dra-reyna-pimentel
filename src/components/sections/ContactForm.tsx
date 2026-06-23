@@ -129,7 +129,7 @@ export default function ContactForm() {
           <div className="md:col-span-2 space-y-4">
             <div className="bg-teal-50 rounded-xl p-4">
               <h3 className="font-semibold text-sm mb-1">📍 Visítanos</h3>
-              <p className="text-gray-600 text-sm">Puerto Plata, Rep. Dom.</p>
+              <p className="text-gray-600 text-sm">C/ Amalio Alonzo #24, Nagua</p>
             </div>
             <div className="bg-teal-50 rounded-xl p-4">
               <h3 className="font-semibold text-sm mb-1">🕐 Horarios</h3>
