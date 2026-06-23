@@ -7,14 +7,16 @@ import AnimatedSection from "@/components/shared/AnimatedSection";
 const API_BASE = "https://clinicadrareyna-crm-api.onrender.com";
 
 export default function ContactForm() {
-  const [step, setStep] = useState(1); // 1=form, 2=confirm, 3=success
+  const [step, setStep] = useState(1); // 1=doctor, 2=service/date, 3=info, 4=success
   const [loading, setLoading] = useState(false);
   const [services, setServices] = useState<{id:number;name:string;duration_minutes:number}[]>([]);
+  const [doctors, setDoctors] = useState<{id:number;name:string;specialty:string}[]>([]);
   const [slots, setSlots] = useState<string[]>([]);
   const [form, setForm] = useState({
     nombre: "",
     telefono: "",
     email: "",
+    doctor_id: "",
     servicio: "",
     fecha: "",
     hora: "",
@@ -24,6 +26,10 @@ export default function ContactForm() {
     fetch(`${API_BASE}/api/public/services`)
       .then(r => r.json())
       .then(d => setServices(d.services || []))
+      .catch(() => {});
+    fetch(`${API_BASE}/api/public/doctors`)
+      .then(r => r.json())
+      .then(d => setDoctors(d.doctors || []))
       .catch(() => {});
   }, []);
 
@@ -59,12 +65,14 @@ export default function ContactForm() {
   };
 
   const canContinue = () => {
-    if (step === 1) return form.servicio && form.fecha && form.hora;
+    if (step === 1) return form.doctor_id;
+    if (step === 2) return form.servicio && form.fecha && form.hora;
     return form.nombre.trim() && form.telefono.trim();
   };
 
   const handleNext = () => {
     if (step === 1 && canContinue()) setStep(2);
+    else if (step === 2 && canContinue()) setStep(3);
   };
 
   const handleSubmit = async () => {
@@ -78,6 +86,7 @@ export default function ContactForm() {
           name: form.nombre.trim(),
           phone: form.telefono.trim(),
           email: form.email.trim(),
+          doctor_id: form.doctor_id ? Number(form.doctor_id) : null,
           service: selectedService?.name || "consulta",
           datetime: `${form.fecha}T${form.hora}:00`,
         }),
@@ -97,7 +106,7 @@ export default function ContactForm() {
 
   const reset = () => {
     setStep(1);
-    setForm({ nombre: "", telefono: "", email: "", servicio: "", fecha: "", hora: "" });
+    setForm({ nombre: "", telefono: "", email: "", servicio: "", fecha: "", hora: "", doctor_id: "" });
   };
 
   const formatDate = (d: string) => {
@@ -170,11 +179,51 @@ export default function ContactForm() {
                 <div className="flex gap-2 mb-6">
                   <div className={`h-2 flex-1 rounded-full ${step >= 1 ? "bg-teal-500" : "bg-gray-200"}`} />
                   <div className={`h-2 flex-1 rounded-full ${step >= 2 ? "bg-teal-500" : "bg-gray-200"}`} />
+                  <div className={`h-2 flex-1 rounded-full ${step >= 3 ? "bg-teal-500" : "bg-gray-200"}`} />
                 </div>
 
                 {step === 1 ? (
                   <div className="space-y-5">
-                    <h3 className="text-xl font-bold">1. Elige tu servicio y horario</h3>
+                    <h3 className="text-xl font-bold">1. Elige tu doctor</h3>
+                    <p className="text-sm text-gray-500">Selecciona el doctor con quien deseas agendar tu cita.</p>
+
+                    <div className="space-y-3">
+                      {doctors.map(d => (
+                        <button
+                          key={d.id}
+                          type="button"
+                          onClick={() => setForm({ ...form, doctor_id: String(d.id) })}
+                          className={`w-full text-left flex items-center gap-4 p-4 rounded-xl border-2 transition-all ${
+                            form.doctor_id === String(d.id)
+                              ? "bg-teal-50 border-teal-500"
+                              : "bg-white border-gray-200 hover:border-teal-300"
+                          }`}
+                        >
+                          <div className="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center text-teal-700 font-bold text-lg shrink-0">
+                            {d.name.split(" ").map((w:string) => w[0]).join("").slice(0, 2).toUpperCase()}
+                          </div>
+                          <div>
+                            <p className="font-semibold text-gray-900">{d.name}</p>
+                            <p className="text-sm text-gray-500">{d.specialty}</p>
+                          </div>
+                          {form.doctor_id === String(d.id) && (
+                            <span className="ml-auto text-teal-600 text-xl">✓</span>
+                          )}
+                        </button>
+                      ))}
+                    </div>
+
+                    <button
+                      onClick={handleNext}
+                      disabled={!canContinue()}
+                      className="w-full py-3 bg-teal-600 text-white font-semibold rounded-full hover:bg-teal-700 transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                    >
+                      Continuar →
+                    </button>
+                  </div>
+                ) : step === 2 ? (
+                  <div className="space-y-5">
+                    <h3 className="text-xl font-bold">2. Elige servicio y horario</h3>
 
                     <div>
                       <label className="block text-sm font-medium text-gray-700 mb-1">Servicio *</label>
@@ -233,12 +282,19 @@ export default function ContactForm() {
                     >
                       Continuar →
                     </button>
+                    <button
+                      onClick={() => setStep(1)}
+                      className="w-full text-sm text-gray-500 hover:text-gray-700 mt-1"
+                    >
+                      ← Cambiar doctor
+                    </button>
                   </div>
                 ) : (
                   <div className="space-y-5">
-                    <h3 className="text-xl font-bold">2. Tus datos</h3>
+                    <h3 className="text-xl font-bold">3. Tus datos</h3>
 
                     <div className="bg-teal-50 rounded-xl p-4 text-sm text-gray-700 space-y-1">
+                      <p><strong>Doctor:</strong> {doctors.find(d => String(d.id) === form.doctor_id)?.name || '—'}</p>
                       <p><strong>Servicio:</strong> {services.find(s => s.id === Number(form.servicio))?.name}</p>
                       <p><strong>Fecha:</strong> {formatDate(form.fecha)}</p>
                       <p><strong>Hora:</strong> {fmtHora(form.hora)}</p>
@@ -282,7 +338,7 @@ export default function ContactForm() {
 
                     <div className="flex gap-3">
                       <button
-                        onClick={() => setStep(1)}
+                        onClick={() => setStep(2)}
                         className="px-6 py-3 border border-gray-300 text-gray-700 font-semibold rounded-full hover:bg-gray-50 transition-all"
                       >
                         ← Atrás
