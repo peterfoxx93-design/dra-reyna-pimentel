@@ -275,7 +275,7 @@ export default function ContactForm() {
                         name="email"
                         value={form.email}
                         onChange={handleChange}
-                        placeholder="opcional"
+                        placeholder="nombre@correo.com"
                         className="w-full border border-gray-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-teal-400 outline-none"
                       />
                     </div>
