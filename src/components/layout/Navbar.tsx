@@ -27,7 +27,7 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <a href="#hero" onClick={(e) => scrollTo(e, "#hero")} className="flex items-center gap-2">
-            <img src="https://clinicadrareyna-crm-api.onrender.com/static/logo_clinica.png" alt="RP" className="w-9 h-9 rounded-full object-cover" />
+            <img src="/images/logo-clinica.png" alt="RP" className="w-9 h-9 rounded-full object-cover" />
             <div className="hidden sm:block">
               <p className="text-sm font-semibold text-dark leading-tight">
                 Dra. Reyna Pimentel
