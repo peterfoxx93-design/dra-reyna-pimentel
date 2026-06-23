@@ -32,7 +32,7 @@ export default function Hero() {
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-4 py-2 bg-brand-500/10 rounded-full text-brand-600 text-sm font-medium mb-6">
               <Sparkles className="w-4 h-4" />
-              Reconocida por el SNS — Mejor Odontóloga Zona Noreste
+              Reconocida por el SNS — Mejor Odontóloga Zona Nordeste
             </div>
 
             {/* Title */}
