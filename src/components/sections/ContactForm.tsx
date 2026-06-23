@@ -45,7 +45,17 @@ export default function ContactForm() {
   const maxDate = new Date(Date.now() + 30 * 86400000).toISOString().split("T")[0];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    if (name === "telefono") {
+      // Auto-format: xxx-xxx-xxxx
+      const digits = value.replace(/\D/g, "").slice(0, 10);
+      let formatted = digits;
+      if (digits.length > 3) formatted = `${digits.slice(0, 3)}-${digits.slice(3)}`;
+      if (digits.length > 6) formatted = `${digits.slice(0, 3)}-${digits.slice(3, 6)}-${digits.slice(6)}`;
+      setForm({ ...form, telefono: formatted });
+    } else {
+      setForm({ ...form, [name]: value });
+    }
   };
 
   const canContinue = () => {
