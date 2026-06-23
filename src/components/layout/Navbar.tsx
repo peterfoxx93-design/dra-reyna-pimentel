@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Shield } from "lucide-react";
 
 const navLinks = [
   { label: "Inicio", href: "#hero" },
@@ -53,8 +53,16 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="tel:+18095847033"
-              className="ml-3 flex items-center gap-2 px-4 py-2 bg-brand-500 text-white text-sm font-semibold rounded-full hover:bg-brand-600 transition-all shadow-soft"
+              href="https://clinicadrareyna-crm-api.onrender.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-2 text-sm text-dark/40 hover:text-brand-500 transition-colors rounded-lg hover:bg-brand-50"
+            >
+              ⚙ Admin
+            </a>
+            <a
+              href="tel:+180****7033"
+              className="ml-2 flex items-center gap-2 px-4 py-2 bg-brand-500 text-white text-sm font-semibold rounded-full hover:bg-brand-600 transition-all shadow-soft"
             >
               <Phone className="w-4 h-4" />
               (809) 584-7033
@@ -86,7 +94,15 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="tel:+18095847033"
+            href="https://clinicadrareyna-crm-api.onrender.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="block py-3 text-dark/40 hover:text-brand-500 border-b border-brand-50"
+          >
+            ⚙ Administración
+          </a>
+          <a
+            href="tel:+180****7033"
             className="mt-3 flex items-center justify-center gap-2 px-4 py-3 bg-brand-500 text-white font-semibold rounded-xl"
           >
             <Phone className="w-4 h-4" />
