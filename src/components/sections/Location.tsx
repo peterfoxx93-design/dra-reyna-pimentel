@@ -12,7 +12,7 @@ export default function Location() {
           {/* Map */}
           <div className="rounded-2xl overflow-hidden border border-brand-100 shadow-card h-[400px]">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3783.854736140822!2d-69.848159!3d19.380261!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDIyJzQ5LjAiTiA2OcKwNTAnNTMuNCJX!5e0!3m2!1ses!2sdo!4v1"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1884.723097457563!2d-70.69933756600437!3d19.79049437286215!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8eb1c5c5a5a5a5a5%3A0x0!2zMTnCsDQ3JzI1LjUiTiA3MMKwNDEnNTUuMiJX!5e0!3m2!1ses!2sdo!4v1"
               width="100%"
               height="100%"
               style={{ border: 0 }}
@@ -29,7 +29,7 @@ export default function Location() {
               Ubicación
             </span>
             <h2 className="text-3xl sm:text-4xl font-bold text-dark mt-3 mb-6">
-              Visítanos en Nagua
+              Visítanos en Puerto Plata
             </h2>
 
             <div className="space-y-4">
@@ -39,9 +39,9 @@ export default function Location() {
                   <div>
                     <p className="font-semibold text-dark">Dirección</p>
                     <p className="text-sm text-dark/60">
-                      C/ Amalio Alonzo #24, Nagua
+                      Puerto Plata, Rep. Dom.
                       <br />
-                      Provincia María Trinidad Sánchez, Rep. Dom.
+                      Provincia Puerto Plata
                     </p>
                   </div>
                 </div>
@@ -61,7 +61,7 @@ export default function Location() {
               </GlassCard>
 
               <a
-                href="https://www.google.com/maps/dir/?api=1&destination=Calle+Amalio+Alonzo+24+Nagua+Dominican+Republic"
+                href="https://www.google.com/maps/dir/?api=1&destination=Puerto+Plata+Dominican+Republic"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-brand-500 text-white font-semibold rounded-full hover:bg-brand-600 transition-all shadow-soft"
