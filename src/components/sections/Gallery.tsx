@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowUpRight, Star } from "lucide-react";
+import { ArrowUpRight, Instagram } from "lucide-react";
 import Image from "next/image";
 import AnimatedSection from "@/components/shared/AnimatedSection";
 
@@ -33,10 +33,10 @@ const cases = [
 
 export default function Gallery() {
   return (
-    <AnimatedSection id="gallery" className="py-20 bg-white">
+    <AnimatedSection className="py-20 bg-brand-50/30">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <div className="text-center max-w-2xl mx-auto mb-14">
           <span className="text-brand-500 font-semibold text-sm uppercase tracking-wider">
             Resultados
           </span>
@@ -44,48 +44,44 @@ export default function Gallery() {
             Sonrisas que hablan por sí solas
           </h2>
           <p className="text-dark/60">
-            Cada paciente es único. Cada sonrisa, una historia de confianza y
-            transformación.
+            Cada paciente es único. Cada sonrisa, una historia de confianza y transformación.
           </p>
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
           {cases.map((item, i) => (
             <div
               key={i}
-              className="group rounded-2xl overflow-hidden bg-white border border-brand-100 shadow-card hover:shadow-lg transition-all"
+              className="group relative bg-white rounded-2xl overflow-hidden shadow-card hover:shadow-xl transition-all duration-300"
             >
               {/* Image */}
-              <div className="relative aspect-[4/3] overflow-hidden">
+              <div className="relative h-56 sm:h-64 overflow-hidden">
                 <Image
                   src={item.image}
                   alt={item.title}
                   fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
-                <span className="absolute top-3 left-3 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-xs font-medium text-dark shadow-sm">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" />
+                <span className="absolute top-4 left-4 px-3 py-1 bg-white/90 backdrop-blur-sm text-dark text-xs font-semibold rounded-full">
                   {item.tag}
                 </span>
               </div>
 
               {/* Info */}
               <div className="p-5">
-                <h3 className="text-lg font-semibold text-dark mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-sm text-dark/60 leading-relaxed">
-                  {item.desc}
-                </p>
+                <h3 className="text-lg font-bold text-dark mb-2">{item.title}</h3>
+                <p className="text-sm text-dark/60 mb-4">{item.desc}</p>
                 <a
-                  href="https://www.instagram.com/drareynapimentel/"
+                  href="https://instagram.com/dra.reynapimentel"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1 mt-3 text-brand-500 text-sm font-medium hover:text-brand-600 transition-colors group/link"
+                  className="inline-flex items-center gap-2 text-brand-500 text-sm font-semibold hover:text-brand-600 transition-colors"
                 >
+                  <Instagram className="w-4 h-4" />
                   Ver casos reales en Instagram
-                  <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+                  <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
               </div>
             </div>
@@ -93,14 +89,14 @@ export default function Gallery() {
         </div>
 
         {/* CTA */}
-        <div className="text-center mt-10">
+        <div className="text-center">
           <a
-            href="https://www.instagram.com/drareynapimentel/"
+            href="https://instagram.com/dra.reynapimentel"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full hover:opacity-90 transition-all shadow-soft"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-pink-500 to-purple-600 text-white font-semibold rounded-full hover:scale-105 transition-transform shadow-lg"
           >
-            <Star className="w-4 h-4 fill-white" />
+            <Instagram className="w-5 h-5" />
             Ver resultados en @dra.reynapimentel
           </a>
         </div>
