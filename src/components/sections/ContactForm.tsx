@@ -23,6 +23,7 @@ export default function ContactForm() {
   });
 
   useEffect(() => {
+    // Wake up Render
     fetch(`${API_BASE}/api/public/services`)
       .then(r => r.json())
       .then(d => setServices(d.services || []))
@@ -31,6 +32,12 @@ export default function ContactForm() {
       .then(r => r.json())
       .then(d => setDoctors(d.doctors || []))
       .catch(() => {});
+
+    // Auto-refresh doctors every 30s to keep Render warm while user fills form
+    const interval = setInterval(() => {
+      fetch(`${API_BASE}/api/public/doctors`).catch(() => {});
+    }, 30000);
+    return () => clearInterval(interval);
   }, []);
 
   // Generate available time slots (9am - 5pm, 30min intervals)
@@ -90,6 +97,7 @@ export default function ContactForm() {
           service: selectedService?.name || "consulta",
           datetime: `${form.fecha}T${form.hora}:00`,
         }),
+        signal: AbortSignal.timeout(45000), // 45s timeout for cold start
       });
       const data = await res.json();
       if (data.success) {
@@ -98,7 +106,9 @@ export default function ContactForm() {
         alert("Error: " + (data.error || "No se pudo agendar"));
       }
     } catch {
-      alert("Error de conexión. Intenta de nuevo.");
+      alert("El servidor está despertando... espera unos segundos y vuelve a intentar.");
+      btn.disabled = false;
+      btn.textContent = '✅ Confirmar reserva';
     } finally {
       setLoading(false);
     }
