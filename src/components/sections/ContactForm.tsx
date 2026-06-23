@@ -93,7 +93,7 @@ export default function ContactForm() {
       });
       const data = await res.json();
       if (data.success) {
-        setStep(3);
+        setStep(4);
       } else {
         alert("Error: " + (data.error || "No se pudo agendar"));
       }
@@ -162,7 +162,7 @@ export default function ContactForm() {
 
           {/* Right: Booking Form */}
           <div className="md:col-span-3 bg-white rounded-2xl shadow-lg p-6 md:p-8">
-            {step === 3 ? (
+            {step === 4 ? (
               <div className="text-center py-12">
                 <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
                 <h3 className="text-2xl font-bold text-gray-800 mb-2">✅ ¡Cita agendada!</h3>
