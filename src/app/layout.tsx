@@ -27,6 +27,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
+              <ChatWidget />
               <ChatWidgetValentina />
       </body>
     </html>
