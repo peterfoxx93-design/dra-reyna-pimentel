@@ -18,7 +18,7 @@ function generateId(): string {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 8)
 }
 
-export default function ChatWidget({ apiUrl, botName, greeting = '¡Hola! ¿En qué puedo ayudarte?', primaryColor = '#0D9488' }: ChatWidgetProps) {
+export default function ChatWidget({ apiUrl, botName, greeting = '¡Hola! ¿En qué puedo ayudarte?', primaryColor = '#1a4b8c' }: ChatWidgetProps) {
   const [open, setOpen] = useState(false)
   const [messages, setMessages] = useState<Array<{ user: string; bot: string }>>([])
   const [input, setInput] = useState('')
