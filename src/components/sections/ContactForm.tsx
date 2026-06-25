@@ -107,8 +107,6 @@ export default function ContactForm() {
       }
     } catch {
       alert("El servidor está despertando... espera unos segundos y vuelve a intentar.");
-      btn.disabled = false;
-      btn.textContent = '✅ Confirmar reserva';
     } finally {
       setLoading(false);
     }
