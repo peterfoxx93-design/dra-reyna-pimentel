@@ -11,10 +11,12 @@ p.innerHTML='<div style="position:fixed;bottom:96px;right:24px;width:340px;heigh
 document.body.appendChild(p);
 b.style.display="none";
 var inp=document.getElementById("vinp"),msgs=document.getElementById("vmsgs"),send=document.getElementById("vsend");
+var chatHistory=[];
 inp.focus();
 send.onclick=async function(){var m=inp.value.trim();if(!m)return;inp.value="";
 msgs.innerHTML+='<div style="display:flex;justify-content:flex-end;margin-bottom:8px"><div style="background:#1a4b8c;color:white;border-radius:12px 12px 4px 12px;padding:10px 14px;max-width:85%;font-size:14px">'+m.replace(/</g,"&lt;")+'</div></div>';
-try{var r=await(await fetch("/api/chat-proxy",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:m,history:[],channel_id:cid,phone:""})})).json();var reply=r.response||"Disculpa, no pude procesar tu mensaje.";}
+try{var r=await(await fetch("/api/chat-proxy",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:m,history:chatHistory,channel_id:cid,phone:""})})).json();var reply=r.response||"Disculpa, no pude procesar tu mensaje.";
+chatHistory.push({user:m,bot:reply});}
 catch(e){var reply="Error: "+e.message;console.log("Valentina fetch error:",e);}
 msgs.innerHTML+='<div style="display:flex;justify-content:flex-start;margin-bottom:8px"><div style="background:white;border-radius:12px 12px 12px 4px;padding:10px 14px;max-width:85%;font-size:14px;color:#374151;box-shadow:0 1px 3px rgba(0,0,0,0.08)">'+reply+'</div></div>';
 msgs.scrollTop=msgs.scrollHeight;};
