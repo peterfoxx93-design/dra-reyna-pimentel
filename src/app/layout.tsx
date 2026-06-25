@@ -27,7 +27,7 @@ export default function RootLayout({
         {children}
         <Footer />
           
-                <script src="https://clinicadrareyna-crm-api.onrender.com/chat-widget.js"></script>
+                <script src="/valentina.js"></script>
       </body>
     </html>
   );
