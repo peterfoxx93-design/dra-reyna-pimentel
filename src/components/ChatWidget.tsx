@@ -1,7 +1,5 @@
 'use client'
 
-'use client'
-
 import { useState, useRef, useEffect, KeyboardEvent } from 'react'
 
 interface ChatWidgetProps {
