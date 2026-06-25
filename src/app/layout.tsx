@@ -26,7 +26,7 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
-          <script src="/valentina.js"></script>
+          
       </body>
     </html>
   );
