@@ -3,8 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
-import ChatWidget from "@/components/chatbot/ChatWidget";
-import dynamic from "next/dynamic";
+import dynamic from 'next/dynamic'
 
 const ChatWidgetValentina = dynamic(() => import('@/components/ChatWidget'), { ssr: false })
 
@@ -29,7 +28,6 @@ export default function RootLayout({
         <Navbar />
         {children}
         <Footer />
-              <ChatWidget />
               <ChatWidgetValentina />
       </body>
     </html>
