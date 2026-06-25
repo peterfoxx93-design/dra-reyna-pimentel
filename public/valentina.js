@@ -2,7 +2,7 @@
 var cid=localStorage.getItem("chat_uid")||(Date.now().toString(36)+Math.random().toString(36).slice(2,8));
 localStorage.setItem("chat_uid",cid);
 var d=document.createElement("div");
-d.innerHTML='<button id="vbtn" style="position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:#1a4b8c;color:white;border:none;cursor:pointer;z-index:9999;box-shadow:0 4px 15px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"/></svg></button>';
+d.innerHTML='<button id="vbtn" style="position:fixed;bottom:24px;right:24px;width:56px;height:56px;border-radius:50%;background:#1a4b8c;color:white;border:none;cursor:pointer;z-index:9999;box-shadow:0 4px 15px rgba(0,0,0,0.3);display:flex;align-items:center;justify-content:center;overflow:hidden"><img src="/valentina-avatar.jpg" style="width:100%;height:100%;object-fit:cover"/></button>';
 document.body.appendChild(d);
 var b=document.getElementById("vbtn");
 b.onclick=function(){
