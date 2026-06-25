@@ -5,6 +5,8 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import ChatWidget from "@/components/chatbot/ChatWidget";
 
+const ChatWidgetValentina = dynamic(() => import('@/components/ChatWidget'), { ssr: false })
+
 const inter = Inter({ subsets: ["latin"], display: "swap", variable: "--font-inter" });
 
 export const metadata: Metadata = {
@@ -27,6 +29,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <ChatWidget />
+              <ChatWidgetValentina />
       </body>
     </html>
   );
