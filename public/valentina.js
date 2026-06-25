@@ -14,7 +14,7 @@ var inp=document.getElementById("vinp"),msgs=document.getElementById("vmsgs"),se
 send.onclick=async function(){var m=inp.value.trim();if(!m)return;inp.value="";
 msgs.innerHTML+='<div style="display:flex;justify-content:flex-end;margin-bottom:8px"><div style="background:#1a4b8c;color:white;border-radius:12px 12px 4px 12px;padding:10px 14px;max-width:85%;font-size:14px">'+m.replace(/</g,"&lt;")+'</div></div>';
 try{var r=await(await fetch("https://clinicadrareyna-crm-api.onrender.com/api/chat",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:m,history:[],channel_id:cid,phone:""})})).json();var reply=r.response||"Disculpa, no pude procesar tu mensaje.";}
-catch(e){var reply="Error de conexion. Intenta de nuevo.";}
+catch(e){var reply="Error: "+e.message;console.log("Valentina fetch error:",e);}
 msgs.innerHTML+='<div style="display:flex;justify-content:flex-start;margin-bottom:8px"><div style="background:white;border-radius:12px 12px 12px 4px;padding:10px 14px;max-width:85%;font-size:14px;color:#374151;box-shadow:0 1px 3px rgba(0,0,0,0.08)">'+reply+'</div></div>';
 msgs.scrollTop=msgs.scrollHeight;};
 inp.onkeydown=function(e){if(e.key==="Enter")send.click();};};
