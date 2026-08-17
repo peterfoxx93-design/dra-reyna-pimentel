@@ -51,7 +51,7 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="https://clinicadrareyna-crm-api.onrender.com"
+              href="https://clinicadrareyna-crm-api-ucat.onrender.com"
               target="_blank"
               rel="noopener noreferrer"
               className="px-3 py-2 text-sm text-dark/40 hover:text-brand-500 transition-colors rounded-lg hover:bg-brand-50"
@@ -92,7 +92,7 @@ export default function Navbar() {
             </a>
           ))}
           <a
-            href="https://clinicadrareyna-crm-api.onrender.com"
+            href="https://clinicadrareyna-crm-api-ucat.onrender.com"
             target="_blank"
             rel="noopener noreferrer"
             className="block py-3 text-dark/40 hover:text-brand-500 border-b border-brand-50"
